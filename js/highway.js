@@ -1,12 +1,7 @@
 
 /// specify the URL of crossbar.io
 //  if the user bypasses the server, make it still work
-var wsuri;
-if (document.location.origin == 'file://') {
-	wsuri = 'ws://127.0.0.1:8080/ws';
-} else {
-	wsuri = (document.location.protocol === 'http:' ? 'ws:' : 'wss:') + '//' + document.location.host + '/ws';
-}
+var wsuri = (document.location.protocol === 'http:' ? 'ws:' : 'wss:') + '//' + document.location.host + '/ws';
 
 /// the WAMP connection to the Router
 var connection = new autobahn.Connection({
@@ -18,7 +13,7 @@ var name;
 var global_session;
 var global_details;
 
-function set_hello(name) {
+function set_hello (name) {
 	global_session.call('de.meet_here.hello', [name]).then(
 		function (res) {
 			console.log('de.meet_here.hello', res);
@@ -33,15 +28,15 @@ function set_hello(name) {
 	);
 }
 
+function set_name (args) {
+	name = args[0];
+	set_hello(name);
+}
+
 // fired when connection is established and session attached
 connection.onopen = function (session, details) {
 	global_session = session;
 	global_details = details;
-
-	function set_name (args) {
-		name = args[0];
-		set_hello(name);
-	}
 
 	session.register('de.meet_here.set_name', set_name).then(
 		onSuccess =	function (reg) {
@@ -52,6 +47,7 @@ connection.onopen = function (session, details) {
 		}
 	);
 
+	set_hello("Guenther");
 };
 
 // fired when connection was lost (or could not be established)
@@ -62,3 +58,5 @@ connection.onclose = function (reason, details) {
 // now actually open the connection
 connection.open();
 
+$(document).ready(function () {
+});
