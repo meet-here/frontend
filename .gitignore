@@ -1,0 +1,4 @@
+# ignore intellij specific files
+.DS_Store
+.idea
+*.iml
