@@ -4,6 +4,7 @@
         <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.css" />
         <link rel="stylesheet" href="css/materialize.css" />
         <link rel="stylesheet" href="css/map.css">
+        <link rel="stylesheet" href="css/websockets.css" />
     <head>
 
     <body>
@@ -11,6 +12,10 @@
             <nav>
                 <div class="nav-wrapper">
                     <a href="#" class="brand-logo">Meet-Here</a>
+                    <ul id="nav-mobile" class="right hide-on-med-and-down">
+                        <li><a href="#/websockets">Websockets Test</a></li>
+                        <li><a href="#/map">MapView</a></li>
+                    </ul>
                 </div>
             </nav>
             <div class="fillScreen" ng-view></div>
@@ -27,8 +32,8 @@
     <script src="js-libs/materialize.js"></script>
 
     <!-- our scripts -->
-    <script src="js/highway.js"></script>
     <script src="apps/mapview/mapview.js"></script>
+    <script src="apps/communicator/communicator.js"></script>
     <script src="js/frontend.js"></script>
 
 

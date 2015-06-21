@@ -1,0 +1,13 @@
+@import "components/color";
+@import "components/variables";
+
+.demo-main {
+  height: 600px;
+  position: relative;
+}
+
+.form-demo {
+  .demo-controls {
+    margin-top: 20px;
+  }
+}
