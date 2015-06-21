@@ -1,23 +1,35 @@
 <!DOCTYPE html>
-
-<html>
+<html ng-app="main">
     <head>
         <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.css" />
-
-        <link rel="stylesheet" href="css/map-view.css">
-
-        <script src="/js-libs/jquery-2.1.4.js"></script>
-        <script src="/js-libs/autobahn.js"></script>
-        <script src="/js-libs/leaflet-0.7.3.js"></script>
-
-        <script src="/js/highway.js"></script>
-        <script src="/js/map.js"></script>
+        <link rel="stylesheet" href="css/materialize.css" />
+        <link rel="stylesheet" href="css/map.css">
     <head>
 
     <body>
         <div id="main">
-            <div id="map"></div>
+            <nav>
+                <div class="nav-wrapper">
+                    <a href="#" class="brand-logo">Meet-Here</a>
+                </div>
+            </nav>
+            <div class="fillScreen" ng-view></div>
         </div>
     </body>
+
+    <!-- vendor scripts -->
+    <script src="js-libs/jquery-2.1.4.js"></script>
+    <script src="js-libs/angular.js"></script>
+    <script src="js-libs/angular-route.js"></script>
+    <script src="js-libs/autobahn.js"></script>
+    <script src="js-libs/angular-wamp.js"></script>
+    <script src="js-libs/leaflet-0.7.3.js"></script>
+    <script src="js-libs/materialize.js"></script>
+
+    <!-- our scripts -->
+    <script src="js/highway.js"></script>
+    <script src="apps/mapview/mapview.js"></script>
+    <script src="js/frontend.js"></script>
+
 
 </html>
