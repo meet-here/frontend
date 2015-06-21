@@ -1,0 +1,21 @@
+<div class="demo-main valign-wrapper">
+    <div class="container form-demo valign grey lighten-3">
+        <div class="row">
+            <form class="col s12 demo-controls" ng-submit="echo()" ng-controller="CommunicationController as comCtrl">
+                <div class="row">
+                    <div class="input-field col s10">
+                        <input id="echo_input" type="text" ng-model="message"/>
+                        <label for="echo_input">Your Name</label>
+                    </div>
+                    <div class="col s2">
+                        <button type="submit" class="btn-floating btn-large waves-effect waves-light red">
+                            <i class="mdi-content-send"></i>
+                        </button>
+                    </div>
+                </div>
+                <div><h3>{{name}}</h3></div>
+            </form>
+
+        </div>
+    </div>
+</div>
