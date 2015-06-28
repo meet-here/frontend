@@ -12,42 +12,54 @@ var connection = new autobahn.Connection({
 var name;
 var global_session;
 var global_details;
+var global_room;
 
-function set_hello (name) {
-	global_session.call('de.meet_here.hello', [name]).then(
+function get_room() {
+		global_session.call('rooms.get_new_room').then(
 		function (res) {
-			console.log('de.meet_here.hello', res);
+			console.log('rooms.get_new_room', res);
 
-			$('#hello').html(res);
+			$('#new-room-name').html(res);
+			$('#join-room-name').val(res);
 		},
 		function (err) {
-			console.log('Error when calling de.meet_here.hello', err);
-
-			$('#hello').html('Default');
+			console.log('rooms.get_new_room', err);
+			debugger;
+			$('#new-room-name').html('ERROR');
 		}
 	);
 }
 
-function set_name (args) {
-	name = args[0];
-	set_hello(name);
+
+
+
+function join_room() {
+   function onevent(args) {
+	    $("#chat-area").append(args[0]+"\n");
+   }
+   global_room = 'rooms.rooms.'+$('#join-room-name').val();
+   global_session.subscribe(global_room, onevent).then(
+		function (subscription) {
+			$("#chat-area").append("joined room"+"\n")},
+		function (error) {
+			console.log("error subscribing to room",error);
+			debugger;
+		});
+   global_session.publish(global_room, ["New user joins!"]);
 }
+
+
+function send_message() {
+	message = $('#chat-message').val();
+	$("#chat-area").append(message+"\n");
+	global_session.publish(global_room, [message]);
+}
+
 
 // fired when connection is established and session attached
 connection.onopen = function (session, details) {
 	global_session = session;
-	global_details = details;
-
-	session.register('de.meet_here.set_name', set_name).then(
-		onSuccess =	function (reg) {
-			console.log('Registered de.meet_here.set_name');
-		},
-		onError = function (err) {
-			console.log('Error when registering de.meet_here.set_name');
-		}
-	);
-
-	set_hello("Guenther");
+	global_details = details;	
 };
 
 // fired when connection was lost (or could not be established)

@@ -8,15 +8,24 @@
 	<head>
 
 	<body>
-		<h1 id="hello"></h1>
-		<p>
-			I  wish I found some better sounds no one's ever heard
-			I wish I had a better voice that sang some better words
-			I wish I found some chords in an order that is new
-			I wish I didn't have to rhyme every time I sang
-			I was told when I get older, all my fears would shrink
-			But now I'm insecure, and I care what people think
-		</p>
+		<ol>
+		<li>
+			(optional) create a new room
+			<button onclick="get_room()">Get room</button>
+			<p id="new-room-name"></p>
+		</li>
+		<li>
+			register for events in a room
+			<input id="join-room-name"></input>
+			<button onclick="join_room()">Join room</button>
+
+		</li>
+		<li>
+			<p>Chat!</p>
+			<textarea id="chat-area" rows=20 cols=100></textarea><br>
+			<input id="chat-message"></input>
+			<button onclick="send_message()">Send!</button>
+		</li>
 	</body>
 
 </html>
