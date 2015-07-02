@@ -1,4 +1,4 @@
-(function() {
+/*(function() {
     var app = angular.module('mapview', []);
     app.controller('MapViewController', [function() {
         var map = L.map('map');
@@ -29,4 +29,50 @@
 
         insertPolygon([[52.509663, 13.376481], [52.519663, 13.376481], [52.519663, 13.386481]]);
     }]);
+})();*/
+
+
+(function() {
+    var app = angular.module('mapview', ["leaflet-directive"]);
+    app.controller('MapViewController', [ '$scope', function($scope) {
+        angular.extend($scope, {
+            center: {
+                lat: 52.509663,
+                lng:  13.376481,
+                zoom: 14
+            },
+            tiles: {
+                url:'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}',
+                options: {
+                    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+                    maxZoom: 18,
+                    id: 'magmabyte.9c6c65af',
+                    accessToken: 'pk.eyJ1IjoibWFnbWFieXRlIiwiYSI6IjMzMWJhZDY0NWI3NDEyNTViNjQ2ZTY1OTBmOWI1NDgyIn0.t3rvfNbF7wSl-VHWPu7BSg',
+                    reuseTiles: true,
+                },
+            defaults: {
+
+                }
+            }
+        });
+    /*angular.extend($scope, {
+        london: {
+            lat: 51.505,
+            lng: -0.09,
+            zoom: 8
+        },
+        defaults: {
+
+            tileLayer: 'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}',
+            tileLayerOptions: {
+                attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+                maxZoom: 18,
+                id: 'magmabyte.9c6c65af',
+                accessToken: 'pk.eyJ1IjoibWFnbWFieXRlIiwiYSI6IjMzMWJhZDY0NWI3NDEyNTViNjQ2ZTY1OTBmOWI1NDgyIn0.t3rvfNbF7wSl-VHWPu7BSg',
+                reuseTiles: true,
+            },
+            scrollWheelZoom: false
+        }
+    });*/
+}]);
 })();
