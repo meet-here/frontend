@@ -1,6 +1,6 @@
 (function() {
     var app = angular.module('mapview', ["leaflet-directive"]);
-    app.controller('MapViewController', [ '$scope', function($scope) {
+    app.controller('MapViewController', [ '$scope','Markers', function($scope, markers) {
         angular.extend($scope, {
             center: {
                 lat: 52.509663,
@@ -15,11 +15,10 @@
                     id: 'magmabyte.9c6c65af',
                     accessToken: 'pk.eyJ1IjoibWFnbWFieXRlIiwiYSI6IjMzMWJhZDY0NWI3NDEyNTViNjQ2ZTY1OTBmOWI1NDgyIn0.t3rvfNbF7wSl-VHWPu7BSg',
                     reuseTiles: true,
-                },
-            defaults: {
-
                 }
-            }
-        });
-}]);
+			},
+			markers: markers,
+            defaults: {}
+        })
+    }]);
 })();
