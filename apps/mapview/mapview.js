@@ -18,7 +18,16 @@
                 }
 			},
 			markers: markers,
-            defaults: {}
-        })
+            defaults: {},
+			events: {
+                    markers:{
+                      enable: [ 'dragend' ]
+                      //logic: 'emit'
+                    }
+                }
+        });
+		 $scope.$on("leafletDirectiveMarker.dragend", function(event, args){
+				$scope.markers[args.modelName] = args.model;
+            });
     }]);
 })();
