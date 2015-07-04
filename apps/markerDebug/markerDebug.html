@@ -3,8 +3,11 @@
     <!-- NOTICE events attribute is optional it is more for options in whitelisting (enable), blacklisting (disable), and logic (emit or broadcast)  -->
     <!--<leaflet center="london" event-broadcast="events" markers="markers" height="480px" width="100%"></leaflet>-->
     <h1>Markers simple example</h1>
-    <p>m1 marker position (lat/lng): <strong  ng-bind="markers['m1'].lat"></strong> / <strong ng-bind="markers['m1'].lng"></strong></p>
-	 <input name="_" ng-model="markers['m1'].lat"><input name="_" ng-model="markers['m1'].lng">
-	<p>m2 marker position (lat/lng): <strong  ng-bind="markers['m2'].lat"></strong> / <strong ng-bind="markers['m2'].lng"></strong></p>
-    </p>
+	<div ng-repeat="(markerName, marker) in markers">
+	<div class="row">
+	 <div class="col s2 offset-s2"><p>{{markerName}}</p></div>
+	 <div class="col s3"><input ng-model="marker.lat" type="number"></div>
+	 <div class="col s3"><input ng-model="marker.lng" type="number"></div>
+    </div>
+	</div>
   </body>
