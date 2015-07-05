@@ -1,5 +1,13 @@
 (function() {
-    var app = angular.module('mapview', []);
+    var app = angular.module('mapview', ['ngRoute']);
+
+    app.config(['$routeProvider', function($routeProvider) {
+        $routeProvider.when('/map', {
+            templateUrl: 'apps/mapview/mapview.html',
+            controller: 'MapViewController'
+        });
+    }]);
+
     app.controller('MapViewController', [function() {
         var map = L.map('map');
 
