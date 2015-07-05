@@ -4,3 +4,7 @@
 *.iml
 .sass-cache
 css/
+
+# ignore bower files
+bower_components
+.bowerrc
