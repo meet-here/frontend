@@ -1,10 +1,9 @@
 (function() {
-    var app = angular.module('mapview', ['ngRoute']);
+    var app = angular.module('mapview', ['ngRoute', 'ngMaterial']);
 
     app.config(['$routeProvider', function($routeProvider) {
         $routeProvider.when('/map', {
-            templateUrl: 'apps/mapview/mapview.html',
-            controller: 'MapViewController'
+            templateUrl: 'apps/mapview/mapview.html'
         });
     }]);
 
@@ -37,4 +36,30 @@
 
         insertPolygon([[52.509663, 13.376481], [52.519663, 13.376481], [52.519663, 13.386481]]);
     }]);
+
+    app.controller("RoomSelectController", function ($scope, $timeout, $mdBottomSheet) {
+        $scope.showRoomSelect = function ($event) {
+            $mdBottomSheet.show({
+                templateUrl: 'apps/mapview/roomSelectTemplate.html',
+                controller: 'RoomController',
+                targetEvent: $event
+            }).then(function (clickedItem) {
+                // do something
+            });
+        }
+    });
+
+    app.controller("RoomController", function ($scope, $mdBottomSheet) {
+        $scope.items = [
+            { name: 'School', icon: 'school' },
+            { name: 'Mail', icon: 'mail' },
+            { name: 'Message', icon: 'message' },
+            { name: 'Copy', icon: 'content_copy' }
+        ];
+
+        $scope.listItemClick = function ($index) {
+            $mdBottomSheet.hide($scope.items[$index]);
+        }
+    });
+
 })();

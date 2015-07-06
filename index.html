@@ -2,34 +2,52 @@
 <html ng-app="main">
     <head>
         <link rel="stylesheet" href="css-libs/leaflet.css" />
-        <link rel="stylesheet" href="css/materialize.css" />
-        <link rel="stylesheet" href="css/map.css">
-        <link rel="stylesheet" href="css/websockets.css" />
+        <link rel="stylesheet" href="css-libs/angular-material.css" />
+        <link rel="stylesheet" href="css/frontend.css" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=RobotoDraft:300,400,500,700,400italic" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
     <head>
 
     <body>
-        <div id="main">
-            <nav>
-                <div class="nav-wrapper">
-                    <a href="#" class="brand-logo">Meet-Here</a>
-                    <ul id="nav-mobile" class="right hide-on-med-and-down">
-                        <li><a href="#/websockets">Websockets Test</a></li>
-                        <li><a href="#/map">MapView</a></li>
-                    </ul>
+        <md-content class="box" style="overflow: hidden;">
+            <md-toolbar class="box-row header" ng-controller="MenuController">
+                <div class="md-toolbar-tools">
+                    <md-button class="md-icon-button" aria-label="Settings" ng-click="toggleMenu()">
+                        <md-icon>view_headline</md-icon>
+                    </md-button>
+                    <h2>
+                        <span>Meet-Here</span>
+                    </h2>
+                    <span flex></span>
                 </div>
-            </nav>
-            <div class="fillScreen" ng-view></div>
-        </div>
+            </md-toolbar>
+            <md-sidenav class="md-sidenav-left md-whiteframe-z2 on-top" md-component-id="menu">
+                <md-toolbar>
+                    <h2 class="md-toolbar-tools">Menu</h2>
+                </md-toolbar>
+                <md-content ng-controller="MenuControllerSideNav" layout-padding="">
+                    <md-list>
+                        <md-list-item ng-repeat="entry in entries">
+                            <md-button class="md-primary text-left" ng-click="close(entry.path)">{{ entry.title }}</md-button>
+                        </md-list-item>
+                    </md-list>
+
+                </md-content>
+            </md-sidenav>
+            <div class="box-row content box" ng-view></div>
+        </md-content>
     </body>
 
     <!-- vendor scripts -->
     <script src="js-libs/jquery-2.1.4.js"></script>
     <script src="js-libs/angular.js"></script>
+    <script src="js-libs/angular-animate.js"></script>
+    <script src="js-libs/angular-aria.js"></script>
+    <script src="js-libs/angular-material.js"></script>
     <script src="js-libs/angular-route.js"></script>
     <script src="js-libs/autobahn.js"></script>
     <script src="js-libs/angular-wamp.js"></script>
     <script src="js-libs/leaflet-0.7.3.js"></script>
-    <script src="js-libs/materialize.js"></script>
 
     <!-- our scripts -->
     <script src="apps/mapview/mapview.js"></script>

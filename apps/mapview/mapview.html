@@ -1,1 +1,7 @@
-<div id="map" class="fillScreen"></div>
+<div class="box-row content box" ng-controller="MapViewController">
+    <div id="map" class="box-row content"></div>
+</div>
+
+<div class="box-row footer" ng-controller="RoomSelectController">
+    <md-button class="md-primary md-raised" ng-click="showRoomSelect($event)">Select Room</md-button>
+</div>
