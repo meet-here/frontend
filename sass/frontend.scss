@@ -39,3 +39,22 @@ body {
     @include flex(0 1 auto);
   }
 }
+
+.map-actions {
+  position: absolute;
+  bottom: 20px;
+  right: 5px;
+
+  .md-fab:hover {
+      background-color: #000 !important;
+  }
+
+  .md-fab.md-raised {
+    md-icon {
+      color: #000 !important;
+      :hover {
+        color: #fff !important;
+      }
+    }
+  }
+}
