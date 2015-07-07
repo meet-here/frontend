@@ -34,6 +34,7 @@
                       $scope.name = 'de.meet_here.hello returns: ' + result;
                   },
                   function (error) {
+                      debugger;
                       $scope.name = 'de.meet_here.hello error: ' + error;
                   }
               );

@@ -1,6 +1,6 @@
 (function() {
 
-    var app = angular.module('markerDebug', ['ngRoute']);
+    var app = angular.module('markerDebug', ['ngRoute', 'ngMaterial']);
 	app.config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/markerDebug', {
             templateUrl: 'apps/markerDebug/markerDebug.html',

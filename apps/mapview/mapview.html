@@ -1,1 +1,21 @@
-<leaflet center="center" tiles="tiles" markers="markers" class="fillScreen"></leaflet>
+<div class="box-row content box" ng-controller="MapViewController">
+    <leaflet center="center" tiles="tiles" markers="markers" class="box-row content"></leaflet>
+</div>
+
+<div class="map-actions" ng-controller="RoomSelectController">
+    <md-fab-speed-dial md-open="false" md-direction="up" class="md-scale">
+        <md-fab-trigger>
+            <md-button aria-label="menu" class="md-fab md-warn">
+                <md-icon>settings</md-icon>
+            </md-button>
+        </md-fab-trigger>
+        <md-fab-actions>
+            <md-button aria-label="chat" class="md-fab md-raised md-mini">
+                <md-icon>chat</md-icon>
+            </md-button>
+            <md-button aria-label="layers" class="md-fab md-raised md-mini">
+                <md-icon>layers</md-icon>
+            </md-button>
+        </md-fab-actions>
+    </md-fab-speed-dial>
+</div>
