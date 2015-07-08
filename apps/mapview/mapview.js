@@ -56,29 +56,36 @@
         }, true);
     }]);
 
-    app.controller("RoomSelectController", function ($scope, $timeout, $mdBottomSheet) {
+    app.controller("RoomSelectController", function ($scope, $mdDialog) {
         $scope.showRoomSelect = function ($event) {
-            $mdBottomSheet.show({
+            $mdDialog.show({
                 templateUrl: 'apps/mapview/roomSelectTemplate.html',
                 controller: 'RoomController',
-                targetEvent: $event
-            }).then(function (clickedItem) {
-                // do something
+                targetEvent: $event,
+                parent: angular.element(document.body)
             });
         }
     });
 
-    app.controller("RoomController", function ($scope, $mdBottomSheet) {
-        $scope.items = [
-            { name: 'School', icon: 'school' },
-            { name: 'Mail', icon: 'mail' },
-            { name: 'Message', icon: 'message' },
-            { name: 'Copy', icon: 'content_copy' }
-        ];
+    app.controller("RoomController", function ($scope, $mdDialog, $wamp) {
+        $scope.rooms = [];
 
-        $scope.listItemClick = function ($index) {
-            $mdBottomSheet.hide($scope.items[$index]);
-        }
+        $scope.close = function() {
+            $mdDialog.hide();
+        };
+
+        $scope.getRooms = function () {
+            $wamp.call('rooms.get_all_rooms').then(
+                function (rooms) {
+                    $scope.rooms = rooms;
+                },
+                function (error) {
+                    // TODO think of s.th. nice
+                }
+            );
+        };
+        $scope.getRooms();
+
     });
 
 })();

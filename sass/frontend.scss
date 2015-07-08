@@ -52,9 +52,18 @@ body {
   .md-fab.md-raised {
     md-icon {
       color: #000 !important;
-      :hover {
-        color: #fff !important;
-      }
+    }
+
+    :hover {
+      color: #fff !important;
     }
   }
+}
+
+.room-dialog {
+  md-dialog-content {
+    padding: 0;
+  }
+
+  min-width: 500px;
 }
