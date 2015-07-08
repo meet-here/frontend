@@ -12,6 +12,10 @@ For licenses of included components see below
 * [angular-wamp](https://github.com/voryx/angular-wamp) - [MIT](https://github.com/voryx/angular-wamp/blob/master/LICENSE)
 * [angular-leaflet-directive](http://tombatossals.github.io/angular-leaflet-directive/#!/) - [MIT](https://github.com/tombatossals/angular-leaflet-directive/blob/master/LICENSE)
 
+## Installing included dependencies
+We are using [Bower](http://bower.io/) for managing our dependencies. 
+You can install all dependencies by typing `bower install` in the root directory. 
+
 ## useful links for used libraries
 
 * Materialize CSS library: http://materializecss.com/
