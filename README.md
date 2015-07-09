@@ -5,12 +5,15 @@ This is the frontend component of [meet-here](https://github.com/meet-here/meet-
 We haven't decided yet, so currently not available for use, sorry. 
 For licenses of included components see below
 
-## included dependencies
+## dependencies
 * [AngularJS](https://www.angularjs.org) - [MIT](https://github.com/angular/angular.js/blob/master/LICENSE)
-* [Leaflet](http://leafletjs.com/) - [BSD 2-Clause](https://github.com/Leaflet/Leaflet/blob/master/LICENSE)
+* [Angular Material](https://material.angularjs.org) - [MIT](https://github.com/angular/material/blob/master/LICENSE)
 * [angular-wamp](https://github.com/voryx/angular-wamp) - [MIT](https://github.com/voryx/angular-wamp/blob/master/LICENSE)
+* [Autobahn](http://autobahn.ws/) - [MIT](https://github.com/tavendo/AutobahnPython/blob/master/LICENSE)
+* [Leaflet](http://leafletjs.com/) - [BSD 2-Clause](https://github.com/Leaflet/Leaflet/blob/master/LICENSE)
+* [JQuery](https://jquery.com/) - [JQuery License](https://github.com/jquery/jquery/blob/master/LICENSE.txt)
 
-## Installing included dependencies
+## Installing dependencies
 We are using [Bower](http://bower.io/) for managing our dependencies. 
 You can install all dependencies by typing `bower install` in the root directory. 
 
