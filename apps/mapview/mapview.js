@@ -26,6 +26,8 @@
 			},
 			markers: markers,
             defaults: {},
+            currentRoom: {},
+            rooms: [],
 			events: {
                     markers:{
                       enable: [ 'dragend' ]
@@ -68,7 +70,10 @@
     });
 
     app.controller("RoomController", function ($scope, $mdDialog, $wamp) {
-        $scope.rooms = [];
+        angular.extend($scope, {
+            rooms: [],
+            currentRoom: {}
+        });
 
         $scope.close = function() {
             $mdDialog.hide();
@@ -77,7 +82,7 @@
         $scope.getRooms = function () {
             $wamp.call('rooms.get_all_rooms').then(
                 function (rooms) {
-                    $scope.rooms = rooms;
+                    $scope.rooms = JSON.parse(rooms);
                 },
                 function (error) {
                     // TODO think of s.th. nice
@@ -86,6 +91,16 @@
         };
         $scope.getRooms();
 
+        $scope.createRoom = function () {
+            $wamp.call('rooms.get_new_room', [$scope.currentRoom.name]).then(
+                function (newRoom) {
+                    $scope.rooms.push(JSON.parse(newRoom));
+                    $scope.tabs.selectedIndex = 0;
+                }
+            )
+        };
+
+        $scope.tabs = { selectedIndex: 0 };
     });
 
 })();
