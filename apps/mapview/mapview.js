@@ -1,5 +1,5 @@
 (function() {
-    var app = angular.module('mapview', ["leaflet-directive", "vxWamp", 'ngRoute', 'ngMaterial']);
+    var app = angular.module('mapview', ["nemLogging","leaflet-directive", "vxWamp", 'ngRoute', 'ngMaterial']);
     
     app.config(['$routeProvider', function($routeProvider) {
         $routeProvider.when('/map', {
